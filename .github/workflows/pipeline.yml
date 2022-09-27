@@ -1,6 +1,9 @@
 
 
 name: My-GithubActions
+env:
+  APPLICATION_NAME: "TEST"
+  PACKAGE_NAME: "TEST-DEPLOY-VER-${{ github.sha }}"
 
 on:
   push:
@@ -17,12 +20,23 @@ jobs:
     steps:
     - name: Hello World
       run: echo "Hello World from Build"
-   
+    - name: Run few commands
+      run: |
+        echo "Hello Message1"
+        echo "Hello Message2"
+        echo "Application Name: ${{ env.APPLICATION_NAME }}"
+    
+    
+    
   my_deploy: 
     runs-on: ubuntu-latest
     needs: [my_building]
     steps:
     - name: Hello World
       run: echo "Hello World From Deploy"
+    - name: DEPLOYING_PACKAGE
+      run: |
+        echo  " Deploy package by Aslan"
+        echo "Deploy package name ${{ env.PACKAGE_NAME }}"
   
   
