@@ -1,0 +1,27 @@
+
+
+name: My-GithubActions
+
+on:
+  push:
+    branches: [ "main" ]          
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  my_building:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Hello World
+      run: echo "Hello World from Build"
+
+  my_deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Hello World
+      run: echo "Hello World From Deploy"
+  
+  
