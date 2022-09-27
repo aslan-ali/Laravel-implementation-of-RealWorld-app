@@ -1,5 +1,3 @@
-
-
 name: My-GithubActions
 env:
   APPLICATION_NAME: "TEST"
@@ -49,10 +47,8 @@ jobs:
         echo "Deploy package name ${{ env.PACKAGE_NAME }}"
     - name: PRINT VARIABLES TEST FOR THIS JOB 
       run: |
-        echo "I wanna say {{ env.VARIABLE1 }}
-        echo "I wanna cry {{ env.VARIABLE2 }}
-        echo "I wanna say this LOCAL variable only work in this -name print variables like that {{ env.LOCAL_VARIABLE }}
+        echo "I wanna say {{ env.VARIABLE1 }}"
+        echo "I wanna cry {{ env.VARIABLE2 }}"
+        echo "I wanna say this LOCAL variable only work in this -name print variables like that {{ env.LOCAL_VARIABLE }}"
       env:
         LOCAL_VARIABLE: "HI_PEOPLE_THIS IS LOCAL VARIABLE"
-        
-  
