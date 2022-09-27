@@ -26,6 +26,11 @@ jobs:
         echo "Hello Message2"
         echo "Application Name: ${{ env.APPLICATION_NAME }}"
     
+    - name: Git Clone my repo to container
+      uses: actions/checkout@v1
+    - name: ensure our repo here
+      run: ls -ltr
+    
     
     
   my_deploy: 
