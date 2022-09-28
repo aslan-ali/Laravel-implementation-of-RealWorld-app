@@ -13,8 +13,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      DOCKER_PASSWD: ${{ secrets.DOCKER_PASSWD }}
     
     steps:
     - name: git clone repository
