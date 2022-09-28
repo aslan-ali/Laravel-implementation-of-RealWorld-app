@@ -13,6 +13,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      DOCKER_PASSWD: ${{ secrets.DOCKER_PASSWD }}
     
     steps:
     - name: git clone repository
@@ -20,7 +22,7 @@ jobs:
     - name: build image and push
       run: |
         ls -ltr
-        docker login --username netdevopsaslan --password ${{ secrets.DOCKER_PASSWD }} 
+        docker login --username netdevopsaslan --password $DOCKER_PASSWD 
         docker build . -t ${{ env.IMAGE_NAME}}:${{ github.sha }}
         
         
