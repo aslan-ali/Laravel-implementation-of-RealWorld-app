@@ -19,7 +19,7 @@ jobs:
       uses: actions/checkout@v1
     - name: build image and push
       run: |
-        docker build . -t 
+        ls -ltr
         docker login -u netdevopsaslan -p ${{ secrets.DOCKER_PASSWD }} 
         docker build . -t ${{ env.IMAGE_NAME}}:${{ github.sha }}
         
