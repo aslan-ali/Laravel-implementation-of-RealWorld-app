@@ -20,7 +20,7 @@ jobs:
     - name: build image and push
       run: |
         ls -ltr
-        docker login -u netdevopsaslan -p ${{ secrets.DOCKER_PASSWD }} 
+        docker login --username netdevopsaslan --password ${{ secrets.DOCKER_PASSWD }} 
         docker build . -t ${{ env.IMAGE_NAME}}:${{ github.sha }}
         
         
