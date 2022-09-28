@@ -21,8 +21,13 @@ jobs:
       run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*         #don't send github 
       
       #how to connect github with AWS-KEY 
-    - name: configure aws secret
-      run : ssh -i ${{ secrets.AWS_PRIVATE }} -J ec2-user@ec2-3-98-143-124.ca-central-1.compute.amazonaws.com
+    - name: executing remote ssh using ssh key
+      uses: ./
+      with:
+        host: ec2-3-98-143-124.ca-central-1.compute.amazonaws.com
+        username: ec2-user
+        key: ${{ secrets.AWS_PRIVATE }}
+        port: 22
+        script: |
+          docker-compose build && docker-compose up -d 
         
-    - name: docker-compose deploy
-      run: docker-compose build && up -d 
