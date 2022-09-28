@@ -5,7 +5,10 @@ env:
 on: 
   push:
      branches:
-       - master
+       - master       
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
