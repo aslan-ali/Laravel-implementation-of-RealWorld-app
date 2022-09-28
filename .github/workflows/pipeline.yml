@@ -1,7 +1,7 @@
 name: DEPLOY TO EC2 INSTANCE AWS
 env:
   DEPLOY_PACKAGE_NAME       : "laravel-app_${{ github.sha }}.zip"
-   
+  HOST           : ec2-3-98-143-124.ca-central-1.compute.amazonaws.com
 on: 
   push:
      branches:
@@ -22,12 +22,10 @@ jobs:
       
       #how to connect github with AWS-KEY 
     - name: executing remote ssh using ssh key
-      uses: ./
+      uses: shimataro/ssh-key-action@v2
       with:
-        host: ec2-3-98-143-124.ca-central-1.compute.amazonaws.com
-        username: ec2-user
         key: ${{ secrets.AWS_PRIVATE }}
-        port: 22
-        script: |
-          docker-compose build && docker-compose up -d 
+        known_hosts: ${{ env.HOST }}
+   - name: run ssh
+     run: ssh ec2-user@${{ env.HOST }}
         
