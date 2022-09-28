@@ -22,7 +22,7 @@ jobs:
       
       #how to connect github with AWS-KEY 
     - name: configure aws secret
-      run : ssh -i ${{ secrets.aws_private }} ec2-user@ec2-3-98-143-124.ca-central-1.compute.amazonaws.com
+      run : ssh -i ${{ secrets.AWS_PRIVATE }} ec2-user@ec2-3-98-143-124.ca-central-1.compute.amazonaws.com
         
     - name: docker-compose deploy
       run: docker-compose build && up -d 
