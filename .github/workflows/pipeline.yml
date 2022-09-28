@@ -19,10 +19,15 @@ jobs:
     steps:
     - name: git clone repository
       uses: actions/checkout@v1
+    - name: Login to Docker HUB
+      uses: docker/login-action@v1
+      with:
+        username: netdevopsaslan
+        password: ${{ secrets.ACCESS_TOKEN }}
+        
     - name: build image and push
       run: |
         ls -ltr
-        echo ${{ secrets.DOCKER_PASSWD }} | docker login -u netdevopsaslan --password-stdin
         docker build . -t ${{ env.IMAGE_NAME}}:${{ github.sha }}
         
         
