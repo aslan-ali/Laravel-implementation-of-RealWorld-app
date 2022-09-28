@@ -18,4 +18,8 @@ jobs:
       run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*         #don't send github 
       
       #how to connect github with AWS-KEY 
+    - name: configure aws secret
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id : $
       
